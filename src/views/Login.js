@@ -41,6 +41,17 @@ class Login extends Component {
               <Formik
                 enableReinitialize={true}
                 initialValues={{kdkppn: '', nama: ''}}
+                validate={values => {
+                  let errors = {};
+                  if(!values.kdkppn) {
+                    errors.kdkppn = 'required';
+                  }
+
+                  if(!values.nama){
+                    errors.nama = 'required';
+                  }
+                  return errors;
+                }}
                 onSubmit={(values, { setSubmiting }) => {
                   postUser(values).then(res => {
                     this.setState({message: {
@@ -59,6 +70,8 @@ class Login extends Component {
               >
               {({
                 values,
+                errors,
+                touched,
                 handleChange,
                 handleBlur,
                 handleSubmit
@@ -76,7 +89,13 @@ class Login extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
+                    {
+                      errors.kdkppn ? 
+                      <Message attached='bottom' color='red'>{errors.kdkppn}</Message> :
+                      null
+                    }
                   </Form.Field>
+                  <Form.Field >
                     <Form.Input 
                       size='big'
                       icon='key' 
@@ -88,14 +107,18 @@ class Login extends Component {
                       onChange={handleChange}
                       onBlur={handleBlur}
                     />
-                  <Form.Field >
+                    {
+                      errors.nama ? 
+                      <Message attached='bottom' color='red'>{errors.nama}</Message> :
+                      null
+                    }
                   </Form.Field>
                   <Form.Field>
                     <Button
                       fluid
                       size='big'
                       type='submit' 
-                      content='masuk'
+                      content='Masuk'
                       primary
                       onClick={handleSubmit}
                     />

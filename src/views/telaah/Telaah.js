@@ -79,7 +79,7 @@ class Telaah extends Component{
               e.persist();
               this.setState({bulan: value})
             } }/>
-            <Button icon labelPosition='left' size='big' color='green' floated='right' onClick={ () => window.open(download + this.state.file)}>
+            <Button icon labelPosition='left' size='big' color='blue' floated='right' onClick={ () => window.open(download + this.state.file)}>
               <Icon name='file excel outline' />
               Download Excel
             </Button>

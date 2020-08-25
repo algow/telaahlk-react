@@ -5,12 +5,24 @@ import {
   Grid,
   Header,
   Icon,
+  Message,
   Segment
 } from 'semantic-ui-react';
 import { Formik } from 'formik';
 import { postUpload } from '../actions/upload';
 
 class Upload extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      message: {
+        display: false,
+        color: '',
+        message: ''
+      }
+    }
+  }
+
   render(){
     const bulanOptions = [
       {key: 1, value: 1, text: 'Januari'},
@@ -42,16 +54,46 @@ class Upload extends Component {
             <Formik
               enableReinitialize={true}
               initialValues={{bulan: '', satker_kas: null, satker_akrual: null, bank_kas: null, bank_akrual: null}}
+              validate={values => {
+                let errors = {};
+
+                if(!values.bulan) {
+                  errors.bulan = 'required';
+                }
+                if(!values.satker_kas){
+                  errors.satker_kas = 'required';
+                }
+                if(!values.satker_akrual){
+                  errors.satker_akrual = 'required';
+                }
+                if(!values.bank_kas){
+                  errors.bank_kas = 'required';
+                }
+                if(!values.bank_akrual){
+                  errors.bank_akrual = 'required';
+                }
+
+                return errors;
+              }}
               onSubmit={(values, { setSubmiting }) => {
                 postUpload(values).then(res => {
-                  console.log(res);
+                  this.setState({message: {
+                    display: true,
+                    color: 'green',
+                    message: res.msg
+                  }});
                 }).catch(err => {
-                  console.log(err);
+                  this.setState({message: {
+                    display: true,
+                    color: 'red',
+                    message: 'error'
+                  }});
                 });
               }}
             >
               {({
                 values,
+                errors,
                 handleChange,
                 handleBlur,
                 handleSubmit,
@@ -70,6 +112,11 @@ class Upload extends Component {
                         })
                       }
                     </select>
+                    {
+                      errors.bulan ? 
+                      <Message attached='bottom' color='red'>{errors.bulan}</Message> :
+                      null
+                    }
                   </Form.Field >
                   <Form.Field>
                     <label>Satker Kas</label>
@@ -81,6 +128,11 @@ class Upload extends Component {
                       }}
                       onBlur={handleBlur}
                     />
+                    {
+                      errors.satker_kas ? 
+                      <Message attached='bottom' color='red'>{errors.satker_kas}</Message> :
+                      null
+                    }
                   </Form.Field>
                   <Form.Field>
                     <label>Satker Akrual</label>
@@ -90,7 +142,13 @@ class Upload extends Component {
                       onChange={(event) => {
                         setFieldValue("satker_akrual", event.currentTarget.files[0]);
                       }} 
-                      onBlur={handleBlur} />
+                      onBlur={handleBlur} 
+                    />
+                    {
+                      errors.satker_akrual ? 
+                      <Message attached='bottom' color='red'>{errors.satker_akrual}</Message> :
+                      null
+                    }
                   </Form.Field>
                   <Form.Field>
                     <label>Bank Kas</label>
@@ -100,7 +158,13 @@ class Upload extends Component {
                       onChange={(event) => {
                         setFieldValue("bank_kas", event.currentTarget.files[0]);
                       }}
-                      onBlur={handleBlur} />
+                      onBlur={handleBlur} 
+                    />
+                    {
+                      errors.bank_kas ? 
+                      <Message attached='bottom' color='red'>{errors.bank_kas}</Message> :
+                      null
+                    }
                   </Form.Field>
                   <Form.Field>
                     <label>Bank Akrual</label>
@@ -110,7 +174,13 @@ class Upload extends Component {
                       onChange={(event) => {
                         setFieldValue("bank_akrual", event.currentTarget.files[0]);
                       }}
-                      onBlur={handleBlur} />
+                      onBlur={handleBlur} 
+                    />
+                    {
+                      errors.bank_akrual ? 
+                      <Message attached='bottom' color='red'>{errors.bank_akrual}</Message> :
+                      null
+                    }
                   </Form.Field>
                   <Form.Field>
                     <Button
@@ -126,6 +196,11 @@ class Upload extends Component {
               )}
             </Formik>
           </Segment>
+          { this.state.message.display ? 
+            (<Message attached='bottom' color={ this.state.message.color }>
+              {this.state.message.message}
+            </Message>) : null
+          }
         </Grid.Column>
       </Grid>
     )
