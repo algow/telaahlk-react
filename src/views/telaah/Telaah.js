@@ -6,6 +6,7 @@ import {
   Segment,
   Dropdown
 } from 'semantic-ui-react';
+import { toast } from 'react-semantic-toasts';
 import { download } from '../../api';
 import { getTelaah } from '../../actions/telaah';
 import WrappedAkrual from './akrual';
@@ -16,6 +17,7 @@ class Telaah extends Component{
   constructor(props) {
     super(props);
     this.state = {
+      modal: false,
       bulan: 0,
       message: '',
       file: '',
@@ -44,7 +46,12 @@ class Telaah extends Component{
         }
       }).catch(err => {
         if(this.state.message !== 'error') {
-          this.setState({ message: 'error' });
+          toast({
+            type: 'error',
+            title: 'Warning!',
+            description: 'Data bulan ini tidak ditemukan',
+            time: 4000
+          });
         }
       });
     }
@@ -79,7 +86,7 @@ class Telaah extends Component{
               e.persist();
               this.setState({bulan: value})
             } }/>
-            <Button icon labelPosition='left' size='big' color='blue' floated='right' onClick={ () => window.open(download + this.state.file)}>
+            <Button icon labelPosition='left' size='big' color='green' floated='right' onClick={ () => window.open(download + this.state.file)}>
               <Icon name='file excel outline' />
               Download Excel
             </Button>

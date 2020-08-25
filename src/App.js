@@ -5,6 +5,7 @@ import {
   Route
 } from "react-router-dom";
 import { Grid } from 'semantic-ui-react';
+import { SemanticToastContainer } from 'react-semantic-toasts';
 import { isAuthenticated } from './helpers/index';
 import Login from './views/Login';
 import Header from './components/header';
@@ -31,6 +32,7 @@ class App extends Component {
   render() {
     return(
       <div style={{backgroundColor: '#e5e5e5', height: '100vh' }}>
+        <SemanticToastContainer />
         <Grid
           textAlign="center"
           style={{ height: '100%', marginTop: '0' }}

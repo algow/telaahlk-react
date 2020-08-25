@@ -16,7 +16,7 @@ class Headers extends Component {
       <Menu borderless inverted color="teal" fixed="top" size="large">
         <Menu.Item style={{ width:230, fontSize:17 }}>
           <Responsive minWidth={720} maxWidth={1920}>
-            HEADER
+            Untitled App
           </Responsive>
           <Responsive minWidth={720} maxWidth={1920}>
             <Button
