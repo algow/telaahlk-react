@@ -105,7 +105,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJBC'
                       size='big'
-                      placeholder='satker djbc...'
+                      placeholder='kode satker djbc...'
                       name='djbc' 
                       type='text'
                       value={values.djbc}
@@ -117,7 +117,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJP'
                       size='big'
-                      placeholder='satker djp...'
+                      placeholder='kode satker djp...'
                       name='djp' 
                       type='text'
                       value={values.djp}
@@ -129,7 +129,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJPK'
                       size='big'
-                      placeholder='satker djpk...'
+                      placeholder='kode satker djpk...'
                       name='djpk' 
                       type='text'
                       value={values.djpk}
@@ -141,7 +141,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJPPR'
                       size='big'
-                      placeholder='satker djppr...'
+                      placeholder='kode satker djppr...'
                       name='djppr' 
                       type='text'
                       value={values.djppr}
