@@ -14,11 +14,11 @@ class Headers extends Component {
 
     return (
       <Menu borderless inverted color="teal" fixed="top" size="large">
-        <Menu.Item style={{ width:230, fontSize:17 }}>
-          <Responsive minWidth={720} maxWidth={1920}>
-            Untitled App
+        <Menu.Item style={{ width:240, fontSize:17 }}>
+          <Responsive minWidth={720}>
+            TELAAH
           </Responsive>
-          <Responsive minWidth={720} maxWidth={1920}>
+          <Responsive minWidth={720}>
             <Button
               icon
               color="teal"
@@ -31,7 +31,7 @@ class Headers extends Component {
         </Menu.Item>
 
         <Menu.Menu position="right">
-          <Responsive minWidth={720} maxWidth={1920}>
+          <Responsive minWidth={720}>
             <Dropdown
               trigger={trigger}
               icon={null}

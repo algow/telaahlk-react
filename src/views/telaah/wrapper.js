@@ -36,6 +36,7 @@ function telaahWrapper(key, title, WrappedComponent) {
             </Menu.Item>
             <Menu.Menu
               position='right'
+              style={{backgroundColor: '#3d3d3d'}}
             >
               <Menu.Item
                 name='expand'

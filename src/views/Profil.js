@@ -35,7 +35,12 @@ class Profil extends Component {
 
   componentDidMount() {
     getUser(getUserData().kdkppn).then(res => {
-      this.setState({user: {kdkppn: res.kdkppn, nama: res.nama, djbc: !res.djbc && '', djp: !res.djp && '', djpk: !res.djpk && '', djppr: !res.djppr && ''}});
+      this.setState({user: {kdkppn: res.kdkppn, 
+        nama: res.nama, 
+        djbc: (!res.djbc) ? '': res.djbc, 
+        djp: (!res.djp) ? '' : res.djp, 
+        djpk: (!res.djpk) ? '' : res.djpk, 
+        djppr: (!res.djppr) ? '' : res.djppr}});
     });
   }
 
@@ -68,7 +73,8 @@ class Profil extends Component {
                 handleChange,
                 handleBlur,
                 handleSubmit
-              }) => (
+              }) => {
+                return (
                 <Form>
                   <Form.Field>
                     <Input
@@ -154,7 +160,7 @@ class Profil extends Component {
                     />
                   </Form.Field>
                 </Form>
-              )}
+              )}}
             </Formik>
             { this.state.message.display ? 
               (<Message attached='bottom' color={ this.state.message.color }>
