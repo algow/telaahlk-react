@@ -15,10 +15,11 @@ class Upload extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      button_disabled: false,
       message: {
         display: false,
         color: '',
-        message: ''
+        message: '',
       }
     }
   }
@@ -77,10 +78,12 @@ class Upload extends Component {
               }}
               onSubmit={(values, { setSubmiting }) => {
                 postUpload(values).then(res => {
-                  this.setState({message: {
-                    display: true,
-                    color: 'green',
-                    message: res.msg
+                  this.setState({
+                    button_disabled: true,
+                    message: {
+                      display: true,
+                      color: 'green',
+                      message: res.msg
                   }});
                 }).catch(err => {
                   this.setState({message: {
@@ -183,14 +186,25 @@ class Upload extends Component {
                     }
                   </Form.Field>
                   <Form.Field>
-                    <Button
-                      fluid
-                      size='big'
-                      type='submit' 
-                      content='Submit'
-                      primary
-                      onClick={handleSubmit}
-                    />
+                    {
+                      this.state.button_disabled ? 
+                      <Button
+                        fluid
+                        size='big'
+                        type='submit' 
+                        content='Submit'
+                        primary
+                        disabled
+                      /> :
+                      <Button
+                        fluid
+                        size='big'
+                        type='submit' 
+                        content='Submit'
+                        primary
+                        onClick={handleSubmit}
+                      />
+                    }
                   </Form.Field>
                 </Form>
               )}

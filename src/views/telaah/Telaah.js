@@ -43,13 +43,19 @@ class Telaah extends Component{
             },
             akrualkas: res.akrualkas
           });
+          toast({
+            type: 'success',
+            title: 'Berhasil!',
+            description: 'Menampilkan telaah bulan ' + this.state.bulan,
+            time: 4000
+          });
         }
       }).catch(err => {
         if(this.state.message !== 'error') {
           toast({
             type: 'error',
             title: 'Warning!',
-            description: 'Data bulan ini tidak ditemukan',
+            description: 'Data bulan ' + this.state.bulan + ' tidak ditemukan',
             time: 4000
           });
         }
