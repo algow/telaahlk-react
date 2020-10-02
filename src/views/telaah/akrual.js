@@ -6,7 +6,7 @@ function Akrual(props) {
   console.log(props);
   return (
     <div style={{ textAlign: 'center' }}>
-      <Table selectable style={{ fontSize: 18 }}>
+      <Table selectable style={{ fontSize: 14 }}>
         <Table.Header>
           <Table.Row textAlign='center'>
             <Table.HeaderCell>Nomor</Table.HeaderCell>

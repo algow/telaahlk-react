@@ -4,7 +4,7 @@ import wrapper from './wrapper';
 
 function AkrualKas(props) {
   return (
-    <Table selectable style={{ fontSize: 18 }} inverted>
+    <Table selectable style={{ fontSize: 14 }} inverted>
       <Table.Header>
         <Table.Row textAlign='center'>
           <Table.HeaderCell rowSpan='2'>Indikator</Table.HeaderCell>
@@ -23,7 +23,7 @@ function AkrualKas(props) {
           props.content.map(kategori => (
             kategori.body.map(akun => (
               akun.body.map(item => (
-                <Table.Row key={item._id} style={{backgroundColor: (item.nilai !== 0) && '#474747'}}>
+                <Table.Row key={item._id} style={{backgroundColor: (item.nilai !== 0) && '#616161'}}>
                   <Table.Cell>{item.desc}</Table.Cell>
                   <Table.Cell textAlign="center">{item.ledger === 'kas' && item.akun}</Table.Cell>
                   <Table.Cell textAlign="right">{item.ledger === 'kas' && item.nilai.toLocaleString('en-US')}</Table.Cell>

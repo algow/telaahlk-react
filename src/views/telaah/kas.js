@@ -4,7 +4,7 @@ import wrapper from './wrapper';
 
 function Kas(props) {
   return (
-    <Table selectable style={{ fontSize: 18 }}>
+    <Table selectable style={{ fontSize: 14 }}>
       <Table.Header>
         <Table.Row textAlign='center'>
           <Table.HeaderCell>Nomor</Table.HeaderCell>
