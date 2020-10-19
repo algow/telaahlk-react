@@ -10,7 +10,7 @@ function telaahWrapper(key, title, WrappedComponent) {
     constructor(props) {
       super(props);
       this.state = {
-        expand: false
+        expand: true
       }
     }
   
