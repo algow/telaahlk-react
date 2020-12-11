@@ -38,8 +38,8 @@ class Telaah extends Component{
             message: res.message,
             file: res.file,
             segmen_satker: {
-              Cash_SATKER: res.segmen_satker[0].body,
-              Accrual_SATKER: res.segmen_satker[1].body
+              Cash_SATKER: res.segmen_satker['Cash_SATKER'],
+              Accrual_SATKER: res.segmen_satker['Accrual_SATKER']
             },
             akrualkas: res.akrualkas
           });
@@ -55,7 +55,7 @@ class Telaah extends Component{
           toast({
             type: 'error',
             title: 'Warning!',
-            description: 'Data bulan ' + this.state.bulan + ' tidak ditemukan',
+            description: 'Telaah bulan ' + this.state.bulan + ' tidak ditemukan',
             time: 4000
           });
         }
