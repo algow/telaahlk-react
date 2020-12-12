@@ -7,8 +7,8 @@ import {
 
 function telaahWrapper(key, title, WrappedComponent) {
   class Content extends Component {
-    constructor(props) {
-      super(props);
+    constructor() {
+      super();
       this.state = {
         expand: true
       }

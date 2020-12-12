@@ -12,10 +12,12 @@ import { getTelaah } from '../../actions/telaah';
 import WrappedAkrual from './akrual';
 import WrappedKas from './kas';
 import WrappedAkrualKas from './akrualkas';
+import WrappedKasBank from './kasbank';
 
 class Telaah extends Component{
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+
     this.state = {
       modal: false,
       bulan: 0,
@@ -23,7 +25,8 @@ class Telaah extends Component{
       file: '',
       segmen_satker: {
         Cash_SATKER: [],
-        Accrual_SATKER: []
+        Accrual_SATKER: [],
+        Cash_BANK: []
       },
       akrualkas: []
     }
@@ -39,7 +42,8 @@ class Telaah extends Component{
             file: res.file,
             segmen_satker: {
               Cash_SATKER: res.segmen_satker['Cash_SATKER'],
-              Accrual_SATKER: res.segmen_satker['Accrual_SATKER']
+              Accrual_SATKER: res.segmen_satker['Accrual_SATKER'],
+              Cash_BANK: res.segmen_satker['Cash_BANK']
             },
             akrualkas: res.akrualkas
           });
@@ -105,6 +109,9 @@ class Telaah extends Component{
           </Segment>
           <Segment>
             <WrappedAkrualKas content={this.state.akrualkas} />
+          </Segment>
+          <Segment>
+            <WrappedKasBank content={this.state.segmen_satker.Cash_BANK} />
           </Segment>
         </Segment.Group>
       </Segment>
