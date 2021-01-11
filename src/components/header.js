@@ -14,7 +14,7 @@ class Headers extends Component {
 
     return (
       <Menu borderless inverted color="teal" fixed="top" size="large">
-        <Menu.Item style={{ width:240, fontSize:17 }}>
+        <Menu.Item style={{ width:240, fontSize:17, fontWeight:'bold' }}>
           <Responsive minWidth={720}>
             TELAAH
           </Responsive>

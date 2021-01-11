@@ -57,6 +57,9 @@ class Profil extends Component {
             Identitas KPPN
           </Header>
           <Segment attached>
+            Pisahkan dengan tanda koma jika jumlah satker lebih dari satu.
+          </Segment>
+          <Segment attached>
             <Formik
               enableReinitialize={true}
               initialValues={this.state.user}
@@ -81,7 +84,7 @@ class Profil extends Component {
                       label='Kode KPPN'
                       readOnly
                       size='big'
-                      placeholder='kode kppn...'
+                      placeholder='kode KPPN...'
                       name='kdkppn' 
                       type='text'
                       value={values.kdkppn}
@@ -89,11 +92,11 @@ class Profil extends Component {
                       onBlur={handleBlur}
                     />
                   </Form.Field>
-                  <Form.Field >
+                  <Form.Field>
                     <Input 
                       label='Nama KPPN'
                       size='big'
-                      placeholder='nama kppn...'
+                      placeholder='nama KPPN...'
                       name='nama' 
                       type='text'
                       value={values.nama}
@@ -105,7 +108,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJBC'
                       size='big'
-                      placeholder='kode satker djbc...'
+                      placeholder='kode satker DJBC...'
                       name='djbc' 
                       type='text'
                       value={values.djbc}
@@ -117,7 +120,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJP'
                       size='big'
-                      placeholder='kode satker djp...'
+                      placeholder='kode satker DJP...'
                       name='djp' 
                       type='text'
                       value={values.djp}
@@ -129,7 +132,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJPK'
                       size='big'
-                      placeholder='kode satker djpk...'
+                      placeholder='kode satker DJPK...'
                       name='djpk' 
                       type='text'
                       value={values.djpk}
@@ -141,7 +144,7 @@ class Profil extends Component {
                     <Input 
                       label='Satker DJPPR'
                       size='big'
-                      placeholder='kode satker djppr...'
+                      placeholder='kode satker DJPPR...'
                       name='djppr' 
                       type='text'
                       value={values.djppr}

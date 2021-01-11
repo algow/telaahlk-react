@@ -70,9 +70,6 @@ class Upload extends Component {
                 if(!values.bank_kas){
                   errors.bank_kas = 'required';
                 }
-                if(!values.bank_akrual){
-                  errors.bank_akrual = 'required';
-                }
 
                 return errors;
               }}
@@ -170,7 +167,7 @@ class Upload extends Component {
                     }
                   </Form.Field>
                   <Form.Field>
-                    <label>Bank Akrual</label>
+                    <label>Bank Akrual (Opsional)</label>
                     <input 
                       type='file' 
                       name='bank_akrual' 

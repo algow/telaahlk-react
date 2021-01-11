@@ -17,7 +17,6 @@ import WrappedKasBank from './kasbank';
 class Telaah extends Component{
   constructor() {
     super();
-
     this.state = {
       modal: false,
       bulan: 0,

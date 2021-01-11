@@ -20,7 +20,7 @@ function Akrual(props) {
               <Table.Row key={item.pertanyaan.nomor}>
                 <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
                 <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
-                <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}>{ item.jawaban ? 'Ya' : 'Tidak' }</Table.Cell>
+                <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? '#1A9637' : '#db2828', textAlign:'center' }}>{ item.jawaban ? 'Ya' : 'Tidak' }</Table.Cell>
               </Table.Row>
             ))
           }
