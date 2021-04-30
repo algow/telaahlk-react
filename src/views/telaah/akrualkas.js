@@ -25,10 +25,10 @@ function AkrualKas(props) {
               akun.body.map(item => (
                 <Table.Row key={item._id} style={{backgroundColor: (item.nilai !== 0) && '#484848'}}>
                   <Table.Cell>{item.desc}</Table.Cell>
-                  <Table.Cell textAlign="center">{item.ledger === 'kas' && item.akun}</Table.Cell>
-                  <Table.Cell textAlign="right">{item.ledger === 'kas' && item.nilai.toLocaleString('en-US')}</Table.Cell>
-                  <Table.Cell textAlign="center">{item.ledger === 'akrual' && item.akun}</Table.Cell>
-                  <Table.Cell textAlign="right">{item.ledger === 'akrual' && item.nilai.toLocaleString('en-US')}</Table.Cell>
+                  <Table.Cell textAlign="center">{item.ledger === 'Cash_SATKER' && item.akun}</Table.Cell>
+                  <Table.Cell textAlign="right">{item.ledger === 'Cash_SATKER' && item.nilai.toLocaleString('en-US')}</Table.Cell>
+                  <Table.Cell textAlign="center">{item.ledger === 'Accrual_SATKER' && item.akun}</Table.Cell>
+                  <Table.Cell textAlign="right">{item.ledger === 'Accrual_SATKER' && item.nilai.toLocaleString('en-US')}</Table.Cell>
                 </Table.Row>
               ))
             ))

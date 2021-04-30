@@ -184,7 +184,7 @@ class Upload extends Component {
                   </Form.Field>
                   <Form.Field>
                     {
-                      this.state.button_disabled ? 
+                      this.state.button_disabled ?
                       <Button
                         fluid
                         size='big'

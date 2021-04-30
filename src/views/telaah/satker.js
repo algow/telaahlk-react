@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table, Icon } from 'semantic-ui-react';
+import { Message, Table, Icon } from 'semantic-ui-react';
 import wrapper from './wrapper';
 import Keterangan from './keterangan';
 
@@ -43,11 +43,11 @@ function Satker(props) {
                   (!item.jawaban && 
                     props.keterangan[key]
                   ) ? 
-                    <Table.Row>
-                      <Table.Cell colSpan='3'>
-                        <Keterangan data={item} />
-                      </Table.Cell>
-                    </Table.Row> :
+                  <Table.Row>
+                    <Table.Cell colSpan='3'>
+                      <Keterangan data={item} />
+                    </Table.Cell>
+                  </Table.Row> :
                   null
                 }
 
@@ -67,11 +67,14 @@ function Satker(props) {
   )
 }
 
-export default Satker;
+export const WrappedAkrual = wrapper(
+  'akrual',
+  'TELAAH DATA NERACA LAJUR DETAIL PER SEGMEN SATKER (LEDGER AKRUAL)',
+  Satker
+);
 
-// const WrappedKas = wrapper(
-//   'kas',
-//   'TELAAH DATA NERACA LAJUR DETAIL PER SEGMEN SATKER (LEDGER KAS)',
-//   Kas
-// );
-
+export const WrappedKas = wrapper(
+  'kas',
+  'TELAAH DATA NERACA LAJUR DETAIL PER SEGMEN SATKER (LEDGER KAS)',
+  Satker
+);

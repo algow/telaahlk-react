@@ -1,4 +1,4 @@
-const BASE = 'http://10.108.64.56:81/'
+const BASE = 'http://10.108.64.56:4000/'
 
 exports.user = BASE + 'user';
 exports.upload = BASE + 'upload';

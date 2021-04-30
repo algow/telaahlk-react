@@ -9,8 +9,8 @@ import {
 import { toast } from 'react-semantic-toasts';
 import { download } from '../../api';
 import { getTelaah } from '../../actions/telaah';
-import WrappedAkrual from './akrual';
-import WrappedKas from './kas';
+import { WrappedAkrual, WrappedKas } from './satker';
+// import WrappedKas from './kas';
 import WrappedAkrualKas from './akrualkas';
 import WrappedKasBank from './kasbank';
 
@@ -32,7 +32,6 @@ class Telaah extends Component{
   }
 
   componentDidUpdate() {
-    console.log(1)
     if(this.state.bulan !== 0) {
       getTelaah(this.state.bulan).then(res => {
         if(res.file !== this.state.file){

@@ -34,9 +34,9 @@ class Headers extends Component {
           <Responsive minWidth={720}>
             <Dropdown
               trigger={trigger}
-              icon={null}
               className="link item"
               style={{ height: '100%' }}
+              icon="dropdown"
             >
               <Dropdown.Menu >
                 <Dropdown.Item

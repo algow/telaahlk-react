@@ -10,7 +10,8 @@ function telaahWrapper(key, title, WrappedComponent) {
     constructor() {
       super();
       this.state = {
-        expand: true
+        expand: true,
+        keterangan: []
       }
     }
   
@@ -18,6 +19,16 @@ function telaahWrapper(key, title, WrappedComponent) {
       this.setState({
         expand: !this.state.expand
       })
+    }
+
+    handleKeteranganClick = key => {
+      let copyKeterangan = JSON.parse(JSON.stringify(this.state.keterangan));
+      copyKeterangan[key] = !copyKeterangan[key];
+
+      this.setState({
+        keterangan: copyKeterangan
+      });
+      console.log(this.state.keterangan);
     }
     
     render() {
@@ -48,7 +59,11 @@ function telaahWrapper(key, title, WrappedComponent) {
           </Menu>
           <Segment>
             { this.state.expand && 
-              <WrappedComponent content={this.props.content} />
+              <WrappedComponent 
+                content={this.props.content} 
+                keterangan={this.state.keterangan}
+                onKeteranganChange={this.handleKeteranganClick} 
+              />
             }
           </Segment>
         </Segment>

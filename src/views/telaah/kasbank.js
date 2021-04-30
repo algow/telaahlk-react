@@ -1,6 +1,7 @@
 import React from 'react';
-import { Message, Table } from 'semantic-ui-react';
+import { Message, Table, Icon } from 'semantic-ui-react';
 import wrapper from './wrapper';
+import Keterangan from './keterangan';
 
 function Kasbank(props) {
   return (
@@ -21,25 +22,69 @@ function Kasbank(props) {
             props.content.map((item, key) => {
               if(key === 16) {
                 return(
-                  <React.Fragment>
+                  <React.Fragment key={key}>
                     <Table.Row>
                       <Table.Cell colSpan={3} style={{fontWeight: 'bold'}}>Tanpa melakukan filter pada segmen akun maka:</Table.Cell>
                     </Table.Row>
-                    <Table.Row key={item.pertanyaan.nomor}>
+                    <Table.Row onClick={ () => props.onKeteranganChange(key) }>
                       <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
                       <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
-                      <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}>{ item.jawaban ? 'Ya' : 'Tidak' }</Table.Cell>
+                      <Table.Cell 
+                        style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}
+                      >
+                        {
+                          item.jawaban ? 
+                            'Ya' 
+                            :
+                            <div>
+                              <Icon name='angle double down' />
+                              Tidak
+                            </div>
+                        }
+                      </Table.Cell>
                     </Table.Row>
+
+                    {
+                      (!item.jawaban && props.keterangan[key]) ?
+                      <Table.Row>
+                        <Table.Cell colSpan='3'>
+                          <Keterangan data={item} />
+                        </Table.Cell>
+                      </Table.Row> :
+                      null 
+                    }
+
                   </React.Fragment>
                 )
               }
 
               return(
-                <Table.Row key={item.pertanyaan.nomor}>
-                  <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
-                  <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
-                  <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}>{ item.jawaban ? 'Ya' : 'Tidak' }</Table.Cell>
-                </Table.Row>
+                <React.Fragment key={key}>
+                  <Table.Row onClick={ () => props.onKeteranganChange(key) }>
+                    <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
+                    <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
+                    <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}>
+                      { 
+                        item.jawaban ? 
+                        'Ya' : 
+                        <div>
+                          <Icon name='angle double down' />
+                          Tidak
+                        </div> 
+                        }
+                    </Table.Cell>
+                  </Table.Row>
+
+                  {
+                    (!item.jawaban && props.keterangan[key]) ?
+                    <Table.Row>
+                      <Table.Cell colSpan='3'>
+                        <Keterangan data={item} />
+                      </Table.Cell>
+                    </Table.Row> :
+                    null                  
+                  }
+                </React.Fragment>
               )
             })
           }
