@@ -4,7 +4,8 @@ import {
   Header,
   Icon,
   Segment,
-  Dropdown
+  Dropdown,
+  Menu
 } from 'semantic-ui-react';
 import { toast } from 'react-semantic-toasts';
 import { download } from '../../api';
@@ -22,6 +23,7 @@ class Telaah extends Component{
       bulan: 0,
       message: '',
       file: '',
+      timestamp: '',
       segmen_satker: {
         Cash_SATKER: [],
         Accrual_SATKER: [],
@@ -34,10 +36,12 @@ class Telaah extends Component{
   componentDidUpdate() {
     if(this.state.bulan !== 0) {
       getTelaah(this.state.bulan).then(res => {
+        console.log(res, 'RES')
         if(res.file !== this.state.file){
           this.setState({
             message: res.message,
             file: res.file,
+            timestamp: res.timestamp,
             segmen_satker: {
               Cash_SATKER: res.segmen_satker['Cash_SATKER'],
               Accrual_SATKER: res.segmen_satker['Accrual_SATKER'],
@@ -80,6 +84,7 @@ class Telaah extends Component{
       {key: 11, value: 11, text: 'November'},
       {key: 12, value: 12, text: 'Desember'},
     ];
+    // console.log(this.state, 'STATE')
 
     return(
       <Segment>
@@ -87,18 +92,42 @@ class Telaah extends Component{
           <Icon name='table' />
           Telaah Neraca Lajur
         </Header>
+        
+        <Segment style={{paddingTop: '0px', paddingBottom: '0px'}}>
+          <Menu secondary>
+            <Menu.Item>
+              <Icon name='filter' />
+              <label>Bulan:  </label>
+              <Dropdown placeholder='Pilih bulan' selection options={bulanOptions} onChange={ (e, {value}) => {
+                e.persist();
+                this.setState({bulan: value})
+              } }/>
+            </Menu.Item>
+          
+            <Menu.Item>
+              {
+                this.state.timestamp ?
+                <p>
+                  <Icon name='clock outline' />
+                  { this.state.timestamp } WIB
+                </p>
+                :
+                null
+              }
+            </Menu.Item>
+
+            <Menu.Menu position='right'>
+              <Menu.Item>
+                <Button icon labelPosition='left' size='big' color='green' floated='right' onClick={ () => window.open(download + this.state.file)}>
+                  <Icon name='file excel outline' />
+                  Download Excel
+                </Button>
+              </Menu.Item>
+            </Menu.Menu>
+          </Menu>
+        </Segment>
+
         <Segment.Group>
-          <Segment>
-            <label>Bulan: </label>
-            <Dropdown placeholder='Pilih bulan' selection options={bulanOptions} onChange={ (e, {value}) => {
-              e.persist();
-              this.setState({bulan: value})
-            } }/>
-            <Button icon labelPosition='left' size='big' color='green' floated='right' onClick={ () => window.open(download + this.state.file)}>
-              <Icon name='file excel outline' />
-              Download Excel
-            </Button>
-          </Segment>
           <Segment>
             <WrappedAkrual content={this.state.segmen_satker.Accrual_SATKER} />
           </Segment>
