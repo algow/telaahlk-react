@@ -21,6 +21,11 @@ function Satker(props) {
               <React.Fragment key={key}>
                 <Table.Row
                   onClick={ () => props.onKeteranganChange(key) }
+                  style={
+                    item.jawaban ?
+                    {cursor: 'default'} :
+                    {cursor: 'pointer', backgroundColor: '#F2F2F2'}
+                  }
                 >
                   <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
                   <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
@@ -32,7 +37,7 @@ function Satker(props) {
                         'Ya' 
                         :
                         <div>
-                          <Icon name='angle double down' />
+                          <Icon name='toggle down' />
                           Tidak
                         </div>
                     }
@@ -40,10 +45,8 @@ function Satker(props) {
                 </Table.Row>
 
                 {
-                  (!item.jawaban && 
-                    props.keterangan[key]
-                  ) ? 
-                  <Table.Row>
+                  (!item.jawaban && props.keterangan[key] && item.kesalahan) ? 
+                  <Table.Row style={{backgroundColor: '#F2F2F2'}}>
                     <Table.Cell colSpan='3'>
                       <Keterangan data={item} />
                     </Table.Cell>

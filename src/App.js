@@ -9,7 +9,7 @@ import { SemanticToastContainer } from 'react-semantic-toasts';
 import { isAuthenticated } from './helpers/index';
 import Login from './views/Login';
 import Header from './components/header';
-import Sidebar from './components/sidebar';
+import Sider from './components/sider';
 import Profil from './views/Profil';
 import Upload from './views/Upload';
 import Telaah from './views/telaah/Telaah';
@@ -43,7 +43,7 @@ class App extends Component {
             <Router>
             <main className="content-right" style={{ fontSize: 18 }}>
               <Header handleToggleSidebar={this.toggleSidebar} />
-              <Sidebar visible={this.state.sider.visible} />
+              <Sider visible={this.state.sider.visible} handleToggleSidebar={this.toggleSidebar} />
               <Switch>
                 <Route exact path="/" render={ props => <Profil {...props} /> } />
                 <Route exact path="/upload" render={ props => <Upload {...props} /> } />

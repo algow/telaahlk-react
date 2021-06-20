@@ -14,6 +14,7 @@ import { WrappedAkrual, WrappedKas } from './satker';
 // import WrappedKas from './kas';
 import WrappedAkrualKas from './akrualkas';
 import WrappedKasBank from './kasbank';
+import WrappedMutasi from './mutasi';
 
 class Telaah extends Component{
   constructor() {
@@ -29,14 +30,14 @@ class Telaah extends Component{
         Accrual_SATKER: [],
         Cash_BANK: []
       },
-      akrualkas: []
+      akrualkas: [],
+      mutasi: []
     }
   }
 
   componentDidUpdate() {
     if(this.state.bulan !== 0) {
       getTelaah(this.state.bulan).then(res => {
-        console.log(res, 'RES')
         if(res.file !== this.state.file){
           this.setState({
             message: res.message,
@@ -47,7 +48,8 @@ class Telaah extends Component{
               Accrual_SATKER: res.segmen_satker['Accrual_SATKER'],
               Cash_BANK: res.segmen_satker['Cash_BANK']
             },
-            akrualkas: res.akrualkas
+            akrualkas: res.akrualkas,
+            mutasi: res.mutasi
           });
           toast({
             type: 'success',
@@ -84,7 +86,6 @@ class Telaah extends Component{
       {key: 11, value: 11, text: 'November'},
       {key: 12, value: 12, text: 'Desember'},
     ];
-    // console.log(this.state, 'STATE')
 
     return(
       <Segment>
@@ -109,7 +110,7 @@ class Telaah extends Component{
                 this.state.timestamp ?
                 <p>
                   <Icon name='clock outline' />
-                  { this.state.timestamp } WIB
+                  Upload: { this.state.timestamp } WIB
                 </p>
                 :
                 null
@@ -139,6 +140,9 @@ class Telaah extends Component{
           </Segment>
           <Segment>
             <WrappedKasBank content={this.state.segmen_satker.Cash_BANK} />
+          </Segment>
+          <Segment>
+            <WrappedMutasi content={this.state.mutasi} />
           </Segment>
         </Segment.Group>
       </Segment>

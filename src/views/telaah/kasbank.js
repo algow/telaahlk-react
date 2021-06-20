@@ -26,18 +26,25 @@ function Kasbank(props) {
                     <Table.Row>
                       <Table.Cell colSpan={3} style={{fontWeight: 'bold'}}>Tanpa melakukan filter pada segmen akun maka:</Table.Cell>
                     </Table.Row>
-                    <Table.Row onClick={ () => props.onKeteranganChange(key) }>
+                    <Table.Row 
+                      onClick={ () => props.onKeteranganChange(key) }
+                      style={
+                        item.jawaban ?
+                        {cursor: 'default'} :
+                        {cursor: 'pointer'}
+                      }
+                    >
                       <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
                       <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
                       <Table.Cell 
-                        style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}
+                        style={{color: '#fff', backgroundColor: item.jawaban ? '#1A9637' : '#db2828', textAlign:'center' }}
                       >
                         {
                           item.jawaban ? 
                             'Ya' 
                             :
                             <div>
-                              <Icon name='angle double down' />
+                              <Icon name='toggle down' />
                               Tidak
                             </div>
                         }
@@ -45,7 +52,7 @@ function Kasbank(props) {
                     </Table.Row>
 
                     {
-                      (!item.jawaban && props.keterangan[key]) ?
+                      (!item.jawaban && props.keterangan[key] && item.kesalahan) ?
                       <Table.Row>
                         <Table.Cell colSpan='3'>
                           <Keterangan data={item} />
@@ -60,15 +67,22 @@ function Kasbank(props) {
 
               return(
                 <React.Fragment key={key}>
-                  <Table.Row onClick={ () => props.onKeteranganChange(key) }>
+                  <Table.Row 
+                    onClick={ () => props.onKeteranganChange(key) }
+                    style={
+                      item.jawaban ?
+                      {cursor: 'default'} :
+                      {cursor: 'pointer'}
+                    }  
+                  >
                     <Table.Cell textAlign='center'>{ item.pertanyaan.nomor }</Table.Cell>
                     <Table.Cell>{ item.pertanyaan.pertanyaan }</Table.Cell>
-                    <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? 'green' : 'red', textAlign:'center' }}>
+                    <Table.Cell style={{color: '#fff', backgroundColor: item.jawaban ? '#1A9637' : '#db2828', textAlign:'center' }}>
                       { 
                         item.jawaban ? 
                         'Ya' : 
                         <div>
-                          <Icon name='angle double down' />
+                          <Icon name='toggle down' />
                           Tidak
                         </div> 
                         }
@@ -76,7 +90,7 @@ function Kasbank(props) {
                   </Table.Row>
 
                   {
-                    (!item.jawaban && props.keterangan[key]) ?
+                    (!item.jawaban && props.keterangan[key] && item.kesalahan) ?
                     <Table.Row>
                       <Table.Cell colSpan='3'>
                         <Keterangan data={item} />

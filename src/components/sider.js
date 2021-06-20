@@ -32,6 +32,7 @@ class Sider extends Component {
         vertical
         width='thin'
         visible={this.props.visible}
+        onHide={ this.props.handleToggleSidebar }
         style={{ height: '100vh', paddingTop: 75, zIndex: 1 }}
       >
         {this.state.sidebar.map( (value, key) =>

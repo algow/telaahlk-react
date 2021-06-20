@@ -28,7 +28,6 @@ function telaahWrapper(key, title, WrappedComponent) {
       this.setState({
         keterangan: copyKeterangan
       });
-      console.log(this.state.keterangan);
     }
     
     render() {
