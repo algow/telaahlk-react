@@ -13,6 +13,7 @@ import Sider from './components/sider';
 import Profil from './views/Profil';
 import Upload from './views/Upload';
 import Telaah from './views/telaah/Telaah';
+import Satker from './views/Satker';
 
 class App extends Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class App extends Component {
                 <Route exact path="/" render={ props => <Profil {...props} /> } />
                 <Route exact path="/upload" render={ props => <Upload {...props} /> } />
                 <Route exact path="/telaah" render={ props => <Telaah {...props} /> } />
+                <Route exact path="/satker" render={ props => <Satker {...props} /> } />
               </Switch>
             </main>
             </Router>

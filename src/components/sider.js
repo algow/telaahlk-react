@@ -15,7 +15,8 @@ class Sider extends Component {
       sidebar: [
         { name: 'Home', icon: 'home', route: '/' },
         { name: 'Upload', icon: 'upload', route: '/upload' },
-        { name: 'Telaah', icon: 'line graph', route: '/telaah' }
+        { name: 'Telaah', icon: 'line graph', route: '/telaah' },
+        { name: 'Satker', icon: 'users', route: '/satker' }
       ]
     }
   }
